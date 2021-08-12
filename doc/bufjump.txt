@@ -1,0 +1,49 @@
+*bufjump.txt*
+
+Experimental buffer navigation. Basically EasyMotion for buffers.
+
+*bufjump#select()*
+
+	Select a buffer.
+
+	Example mappings:
+>
+	nnoremap <leader>b  :call bufjump#select()<CR>
+	nnoremap <CR>       :call bufjump#select()<CR>
+	nnoremap \          :call bufjump#select()<CR>
+	nnoremap <nowait> Z :call bufjump#select()<CR>
+<
+*g:bufjump_chars*
+
+	Characters used for hashing.
+
+	|String|, non-empty
+	Default: 'fjghdkslaeiruwoqpytbnvmcxz' ~
+
+*g:bufjump_algorithm*
+
+	- With value 0 hashes have variable length and require confirmation
+	  with <CR>.
+	- With value larger than 0 hashes have fixed length and you have to
+	  always make that amount of key presses to select a buffer.
+
+	|Number|, 0 or greater
+	Default: 2 ~
+
+*g:bufjump_ignorecase*
+
+	- 0: off
+	- 1: ignore case for [a-z] characters
+	- 2: ignore case for all characters (% is 5, ? is /, + is =)
+
+	|Number|, between 0 and 2
+	Default: 1 ~
+
+TODO: ~
+	- expose hashing function for use in statusline or bufferline
+	- split bufjump#select() into two functions/commands, displaying and
+	  selection. like :ls and :b
+	- don't display inaccessible buffers for algorithm > 0
+	- colors
+
+vim:tw=78:sw=8:sts=8:ts=8:noet:ft=help:norl:
